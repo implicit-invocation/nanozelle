@@ -1,0 +1,15 @@
+- telegram basic chat flow
+- llm (openai chatgpt in this case)
+- chat history
+  - store chat history in a database
+  - query the chat history
+  - rebuild the history with system, AI and user's messages
+- retrieval
+  - indexing the knowledge source's embeddings
+  - use retrieval chain (conversational retrieval chain)
+- use agent
+- use Vietnamese language
+  - translate the knowledge before indexing
+  - use custom condense prompt template
+  - use custom agent
+- use worker

@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model conversations {
+  id         BigInt   @id @default(autoincrement())
+  chat_id    String   @db.VarChar(255)
+  speaker    String   @db.VarChar(255)
+  message    String   @db.VarChar(4000)
+  created_at DateTime @default(now()) @db.Timestamp(6)
+
+  @@index([chat_id], map: "conversations_index_2")
+}
