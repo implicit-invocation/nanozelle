@@ -17,3 +17,5 @@ Sử dụng ngữ cảnh sau để trả lời câu hỏi ở cuối. Nếu bạ
 
 Câu hỏi: {question}
 Câu trả lời hữu ích:`;
+
+export const START_PROMPT = `Hãy đặt câu hỏi cho tôi về sản phẩm Nanozelle.`;

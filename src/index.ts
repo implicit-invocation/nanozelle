@@ -11,7 +11,12 @@ import {
   SystemChatMessage,
 } from "langchain/schema";
 import { HNSWLib } from "langchain/vectorstores/hnswlib";
-import { SETTINGS, qa_template, question_generator_template } from "./settings";
+import {
+  SETTINGS,
+  START_PROMPT,
+  qa_template,
+  question_generator_template,
+} from "./settings";
 
 import { ConversationalRetrievalQAChain } from "langchain/chains";
 import { OpenAI } from "langchain/llms/openai";
@@ -78,15 +83,7 @@ bot.on("message", async (msg) => {
     return;
   }
 
-  if (msg.text === "/eotw") {
-    if (Date.now() / 1000 - msg.date > 3) {
-      return;
-    }
-    await bot.sendMessage(msg.chat.id, "OK bye!");
-    process.exit(0);
-  }
-
-  let response = "Hãy đặt câu hỏi cho tôi về sản phẩn Nanozelle.";
+  let response = START_PROMPT;
   await bot.sendChatAction(msg.chat.id, "typing");
 
   if (msg.text !== "/start") {

@@ -9,7 +9,9 @@ import { HNSWLib } from "langchain/vectorstores/hnswlib";
 const indexData = async (path: string, name: string) => {
   const text = fs.readFileSync(path, "utf8");
   /* Split the text into chunks */
-  const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000 });
+  const textSplitter = new RecursiveCharacterTextSplitter({
+    chunkSize: 1000,
+  });
   const docs = await textSplitter.createDocuments([text]);
   /* Create the vectorstore */
   const vectorStore = await HNSWLib.fromDocuments(docs, new OpenAIEmbeddings());
